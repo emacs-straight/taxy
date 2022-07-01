@@ -86,20 +86,38 @@
 			  'struct)
                          (`(,(or 'defclass) . ,_)
 			  'class)
-                         (`(,(or 'defcustom 'defgroup 'defvar 'defvar-local) . ,_)
+                         (`(,(or 'cl-defmethod 'defmethod) . ,_)
+			  'method)
+                         (`(,(or 'define-error) . ,_)
+			  'error)
+                         (`(,(or 'defconst 'defcustom 'defgroup 'defvar 'defvar-local) . ,_)
                           'variable)
+                         (`(,(or 'define-hash-table-test) . ,_)
+                          'hash-table-test)
+                         (`(,(or 'defface) . ,_)
+                          'face)
                          (`(,(or 'provide 'require) . ,_)
                           'feature)
                          ;; Top-level forms that don't usually correspond to definitions,
                          ;; so we ignore them.
-                         (`(,(or 'cl-eval-when 'eval-when-compile 'with-eval-after-load) . ,_)
+                         (`(,(or 'cl-eval-when 'eval-and-compile 'eval-when-compile 'with-eval-after-load) . ,_)
                           nil)
-                         (`(,(or 'unless 'when) . ,_)
+                         (`(,(or 'declare-function) . ,_)
+                          nil)
+                         (`(,(or 'unless 'when 'if-let 'if-let* 'when-let 'when-let* '-if-let '-if-let* '-when-let '-when-let* 'setf 'setq) . ,_)
                           nil)
                          ;; Top-level forms that are macro calls (e.g. custom defining macros).
                          ((and `(,car . ,_) (guard (macrop car))) car)
                          ;; Anything else: ignored.
 		         (`(,car . ,_) nil))))
+      ;; FIXME: Returning nil for these ignored types only works when the form is in the
+      ;; top-level file, i.e. when the file's relative name is nil, so these ignored types
+      ;; still show up when they're in other files.  This isn't really the right way to
+      ;; discard uninteresting items.
+
+      ;; FIXME: Also, when a project Lisp file is not loaded into Emacs, some symbols may
+      ;; not be correctly classified, e.g. defining macros.  It's probably not feasible to
+      ;; solve that completely correctly, so some options or workarounds may be needed.
       (when type
         (format "%s" type)))))
 
