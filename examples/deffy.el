@@ -212,15 +212,15 @@ buffer."
 		    default-directory deffy-directory)
 	(let* ((forms (apply #'append (mapcar #'deffy--file-forms files)))
 	       (taxy (thread-last
-			 (make-fn
-			  :name "Deffy"
-			  :description
-                          (format "Definitions in %s:"
-				  (if files
-				      (string-join (mapcar #'file-relative-name files) ", ")
-				    (file-name-nondirectory
-				     (directory-file-name (project-root project)))))
-			  :take (taxy-make-take-function keys deffy-keys))
+		       (make-fn
+			:name "Deffy"
+			:description
+                        (format "Definitions in %s:"
+				(if files
+				    (string-join (mapcar #'file-relative-name files) ", ")
+				  (file-name-nondirectory
+				   (directory-file-name (project-root project)))))
+			:take (taxy-make-take-function keys deffy-keys))
 		       (taxy-fill forms)
 		       (taxy-sort* #'string< #'taxy-name)
 		       (taxy-sort #'string< #'def-name)))
@@ -438,8 +438,9 @@ prefixes, from all `deffy-mode' buffers."
 Return value is actually a one-element list."
   (or (cl-loop for other-buffer in (buffer-list)
 	       when (and (eq 'deffy-mode (buffer-local-value 'major-mode other-buffer))
-		         (member (buffer-file-name buffer)
-                                 (buffer-local-value 'deffy-files other-buffer)))
+		         (or (member (buffer-file-name buffer)
+                                     (buffer-local-value 'deffy-files other-buffer))
+                             (equal default-directory (buffer-local-value 'deffy-directory other-buffer))))
 	       return (list other-buffer))
       ;; Make a new deffy buffer for BUFFER.
       (condition-case nil
@@ -452,6 +453,9 @@ Return value is actually a one-element list."
                         return (list (window-buffer window)))))))
 
 ;;;;; Bookmark support
+
+;; FIXME: If a project gains a file after a Deffy bookmark is made, the restored Deffy
+;; buffer won't show the new file.
 
 (defvar bookmark-make-record-function)
 
