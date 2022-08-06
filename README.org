@@ -933,11 +933,12 @@ In Emacs 28+, see also =M-x shortdoc-display-group RET taxy RET=.
 :TOC:      :depth 0
 :END:
 
-** 0.10-pre
+** 0.10
 
 *Examples*
 + Deffy
   + Fix: Disambiguate forms with the same name.
++ Diredy: Various small improvements.
 
 ** 0.9
 

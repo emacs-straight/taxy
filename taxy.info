@@ -76,7 +76,7 @@ Reference
 
 Changelog
 
-* 0.10-pre: 010-pre. 
+* 0.10: 010. 
 * 0.9: 09. 
 * 0.8: 08. 
 * 0.7: 07. 
@@ -1135,7 +1135,7 @@ File: README.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
 
 * Menu:
 
-* 0.10-pre: 010-pre. 
+* 0.10: 010. 
 * 0.9: 09. 
 * 0.8: 08. 
 * 0.7: 07. 
@@ -1147,17 +1147,18 @@ File: README.info,  Node: Changelog,  Next: Development,  Prev: Usage,  Up: Top
 * 0.1: 01. 
 
 
-File: README.info,  Node: 010-pre,  Next: 09,  Up: Changelog
+File: README.info,  Node: 010,  Next: 09,  Up: Changelog
 
-4.1 0.10-pre
-============
+4.1 0.10
+========
 
 *Examples*
    • Deffy
         • Fix: Disambiguate forms with the same name.
+   • Diredy: Various small improvements.
 
 
-File: README.info,  Node: 09,  Next: 08,  Prev: 010-pre,  Up: Changelog
+File: README.info,  Node: 09,  Next: 08,  Prev: 010,  Up: Changelog
 
 4.2 0.9
 =======
@@ -1389,7 +1390,7 @@ File: README.info,  Node: Additions (4),  Next: Fixes (3),  Prev: Changes (2),  
      now be a function or a list of functions (or a list of a list of
      functions, etc.).  Lists of functions create "chains" of
      independent, dynamic taxys descending from a single root taxy.  See
-     .
+     *note example: "Chains" of independent multi-level dynamic taxys.
 
 
 File: README.info,  Node: Fixes (3),  Prev: Additions (4),  Up: 02
@@ -1456,51 +1457,51 @@ GPLv3
 
 Tag Table:
 Node: Top218
-Node: Examples2309
-Node: Numbery (starting basically)2628
-Node: Lettery (filling incrementally)8389
-Node: Sporty (understanding completely)10903
-Node: Applications16890
-Node: Installation17365
-Node: Usage17678
-Node: Reusable taxys19833
-Node: Threading macros23986
-Node: Modifying filled taxys24525
-Node: Dynamic taxys25343
-Node: Multi-level dynamic taxys27993
-Node: "Chains" of independent multi-level dynamic taxys30186
-Node: Defining a classification domain-specific language33117
-Node: Magit section37280
-Node: Reference37948
-Node: Functions38156
-Node: Macros40134
-Node: Changelog40784
-Node: 010-pre41032
-Node: 0941204
-Node: Changes41318
-Node: 0841690
-Node: Additions41811
-Node: Fixes41955
-Node: 0742093
-Node: Additions (1)42219
-Node: 0642538
-Node: Additions (2)42664
-Node: 0544014
-Node: Additions (3)44161
-Node: Fixes (1)45271
-Node: 0445429
-Node: 0345651
-Node: Changes (1)45794
-Node: Fixes (2)46161
-Node: 0246600
-Node: Changes (2)46772
-Node: Additions (4)47064
-Node: Fixes (3)47923
-Node: 0148177
-Node: Development48278
-Node: Copyright assignment48484
-Node: Credits49072
-Node: License49262
+Node: Examples2301
+Node: Numbery (starting basically)2620
+Node: Lettery (filling incrementally)8381
+Node: Sporty (understanding completely)10895
+Node: Applications16882
+Node: Installation17357
+Node: Usage17670
+Node: Reusable taxys19825
+Node: Threading macros23978
+Node: Modifying filled taxys24517
+Node: Dynamic taxys25335
+Node: Multi-level dynamic taxys27985
+Node: "Chains" of independent multi-level dynamic taxys30178
+Node: Defining a classification domain-specific language33109
+Node: Magit section37272
+Node: Reference37940
+Node: Functions38148
+Node: Macros40126
+Node: Changelog40776
+Node: 01041016
+Node: 0941219
+Node: Changes41329
+Node: 0841701
+Node: Additions41822
+Node: Fixes41966
+Node: 0742104
+Node: Additions (1)42230
+Node: 0642549
+Node: Additions (2)42675
+Node: 0544025
+Node: Additions (3)44172
+Node: Fixes (1)45282
+Node: 0445440
+Node: 0345662
+Node: Changes (1)45805
+Node: Fixes (2)46172
+Node: 0246611
+Node: Changes (2)46783
+Node: Additions (4)47075
+Node: Fixes (3)47998
+Node: 0148252
+Node: Development48353
+Node: Copyright assignment48559
+Node: Credits49147
+Node: License49337
 
 End Tag Table
 
