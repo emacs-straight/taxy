@@ -6,7 +6,7 @@
 ;; Maintainer: Adam Porter <adam@alphapapa.net>
 ;; URL: https://github.com/alphapapa/taxy.el
 ;; Package-Requires: ((emacs "26.3"))
-;; Version: 0.10.2
+;; Version: 0.11-pre
 ;; Keywords: lisp
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -118,6 +118,31 @@ when reusing taxy definitions."
   (append (taxy-items taxy)
           (cl-loop for taxy in (taxy-taxys taxy)
                    append (taxy-flatten taxy))))
+
+(defvar taxy-lift-min-items 2
+  "In `taxy-lift', taxys with fewer than this many items will be \"lifted\".
+That is, their items will be lifted into their parent taxy, and the taxy
+itself will be removed from the parent taxy's taxys.
+
+This is defined as a special variable because passing the argument
+directly to the function would deny the ability to call the function in
+a threading style.")
+
+(defun taxy-lift (taxy)
+  "Return TAXY having \"lifted\" its sub-taxys.
+That is, a sub-taxy which has fewer items than `taxy-lift-min-items'
+will have its items \"lifted\" into its parent taxy's items, and the
+sub-taxy itself will be removed from its parent taxy's taxys.  This
+operates recursively within TAXY's sub-taxys."
+  (cl-labels ((rec (taxy)
+                (mapc #'rec (taxy-taxys taxy))
+                (dolist (sub-taxy (taxy-taxys taxy))
+                  (when (and (not (taxy-taxys sub-taxy))
+                             (< 0 (length (taxy-items sub-taxy)) taxy-lift-min-items))
+                    (cl-callf2 append (taxy-items sub-taxy) (taxy-items taxy))
+                    (cl-callf2 remq sub-taxy (taxy-taxys taxy))))))
+    (rec taxy))
+  taxy)
 
 (defun taxy-mapcar-items (fn taxy)
   "Return copy of TAXY, having replaced its items with the value of FN on each.

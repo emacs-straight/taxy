@@ -66,7 +66,7 @@ Flexible table view
   │        59 61 62 65 67 70 71 73 74 77 79 82 83 85 86 89 91 94 95 97 98)
   │    (("Divisible by 3" "(non-consuming)"
   │      (12 15 18 21 24 27 30 33 36 39 42 45 48 51 54 57 60 63 66 69 72 75 78 81 84
-  │ 	 87 90 93 96 99))
+  │          87 90 93 96 99))
   │     ("Divisible by 4" "(non-consuming)"
   │      (12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96))
   │     ("Divisible by 3 or 4" "(consuming)"
@@ -74,7 +74,7 @@ Flexible table view
   │      ;; numbers have already been taken in (without being consumed) by
   │      ;; the previous two sibling taxys, they may also appear in them.
   │      (12 15 16 18 20 21 24 27 28 30 32 33 36 39 40 42 44 45 48 51 52 54 56 57 60
-  │ 	 63 64 66 68 69 72 75 76 78 80 81 84 87 88 90 92 93 96 99))
+  │          63 64 66 68 69 72 75 76 78 80 81 84 87 88 90 92 93 96 99))
   │     ("Divisible by 5" "(non-consuming)"
   │      (10 25 35 50 55 65 70 85 95))))))
   └────
@@ -91,50 +91,50 @@ Flexible table view
   │    :name "Numbery"
   │    :description "A silly taxonomy of numbers."
   │    :taxys (list (make-taxy
-  │ 		 :name "< 10"
-  │ 		 :description "Numbers below 10 (consuming)"
-  │ 		 :predicate (lambda (n) (< n 10))
-  │ 		 :taxys (list
-  │ 			 ;; These sub-taxys further classify the numbers below 10 into odd
-  │ 			 ;; and even.  The odd taxy "consumes" numbers, while the even one
-  │ 			 ;; doesn't, leaving them to reappear in the parent taxy's items.
-  │ 			 (make-taxy :name "Odd"
-  │ 				    :description "(consuming)"
-  │ 				    :predicate #'oddp)
-  │ 			 (make-taxy :name "Even"
-  │ 				    :description "(non-consuming)"
-  │ 				    :predicate #'evenp
-  │ 				    :then #'identity)))
-  │ 		(make-taxy
-  │ 		 :name ">= 10"
-  │ 		 :description "Numbers above 9 (consuming)"
-  │ 		 :predicate (lambda (n) (>= n 10))
-  │ 		 :taxys (list
-  │ 			 ;; Like in the "< 10" taxy, these sub-taxys further classify
-  │ 			 ;; the numbers, but only one of them consumes numbers it
-  │ 			 ;; takes in, leaving the rest to reappear in the parent taxy.
-  │ 			 (make-taxy :name "Divisible by 3"
-  │ 				    :description "(non-consuming)"
-  │ 				    :predicate (lambda (n) (zerop (mod n 3)))
-  │ 				    :then #'identity)
-  │ 			 (make-taxy :name "Divisible by 4"
-  │ 				    :description "(non-consuming)"
-  │ 				    :predicate (lambda (n) (zerop (mod n 4)))
-  │ 				    :then #'identity)
-  │ 			 (make-taxy :name "Divisible by 3 or 4"
-  │ 				    :description "(consuming)"
-  │ 				    ;; Since this taxy's `:then' function is unset,
-  │ 				    ;; it defaults to `ignore', which causes it to
-  │ 				    ;; consume numbers it takes in.  Since these
-  │ 				    ;; numbers have already been taken in (without
-  │ 				    ;; being consumed) by the previous two sibling
-  │ 				    ;; taxys, they also appear in them.
-  │ 				    :predicate (lambda (n) (or (zerop (mod n 3))
-  │ 							       (zerop (mod n 4)))))
-  │ 			 (make-taxy :name "Divisible by 5"
-  │ 				    :description "(non-consuming)"
-  │ 				    :predicate (lambda (n) (zerop (mod n 5)))
-  │ 				    :then #'identity))))))
+  │                  :name "< 10"
+  │                  :description "Numbers below 10 (consuming)"
+  │                  :predicate (lambda (n) (< n 10))
+  │                  :taxys (list
+  │                          ;; These sub-taxys further classify the numbers below 10 into odd
+  │                          ;; and even.  The odd taxy "consumes" numbers, while the even one
+  │                          ;; doesn't, leaving them to reappear in the parent taxy's items.
+  │                          (make-taxy :name "Odd"
+  │                                     :description "(consuming)"
+  │                                     :predicate #'oddp)
+  │                          (make-taxy :name "Even"
+  │                                     :description "(non-consuming)"
+  │                                     :predicate #'evenp
+  │                                     :then #'identity)))
+  │                 (make-taxy
+  │                  :name ">= 10"
+  │                  :description "Numbers above 9 (consuming)"
+  │                  :predicate (lambda (n) (>= n 10))
+  │                  :taxys (list
+  │                          ;; Like in the "< 10" taxy, these sub-taxys further classify
+  │                          ;; the numbers, but only one of them consumes numbers it
+  │                          ;; takes in, leaving the rest to reappear in the parent taxy.
+  │                          (make-taxy :name "Divisible by 3"
+  │                                     :description "(non-consuming)"
+  │                                     :predicate (lambda (n) (zerop (mod n 3)))
+  │                                     :then #'identity)
+  │                          (make-taxy :name "Divisible by 4"
+  │                                     :description "(non-consuming)"
+  │                                     :predicate (lambda (n) (zerop (mod n 4)))
+  │                                     :then #'identity)
+  │                          (make-taxy :name "Divisible by 3 or 4"
+  │                                     :description "(consuming)"
+  │                                     ;; Since this taxy's `:then' function is unset,
+  │                                     ;; it defaults to `ignore', which causes it to
+  │                                     ;; consume numbers it takes in.  Since these
+  │                                     ;; numbers have already been taken in (without
+  │                                     ;; being consumed) by the previous two sibling
+  │                                     ;; taxys, they also appear in them.
+  │                                     :predicate (lambda (n) (or (zerop (mod n 3))
+  │                                                                (zerop (mod n 4)))))
+  │                          (make-taxy :name "Divisible by 5"
+  │                                     :description "(non-consuming)"
+  │                                     :predicate (lambda (n) (zerop (mod n 5)))
+  │                                     :then #'identity))))))
   │ 
   │ (let ((numbers (cl-loop for i below 100 collect i))
   │       ;; Since `numbery' is stored in a variable, we use an emptied
@@ -163,19 +163,19 @@ Flexible table view
   │    :name "Lettery"
   │    :description "A comprehensive taxonomy of letters."
   │    :taxys (list (make-taxy
-  │ 		 :name "Vowels"
-  │ 		 :description "You know what those are."
-  │ 		 :predicate (lambda (l)
-  │ 			      (member-ignore-case l '("a" "e" "i" "o" "u"))))
-  │ 		(make-taxy
-  │ 		 :name "Consonants"
-  │ 		 :description "Well, if they aren't vowels..."))))
+  │                  :name "Vowels"
+  │                  :description "You know what those are."
+  │                  :predicate (lambda (l)
+  │                               (member-ignore-case l '("a" "e" "i" "o" "u"))))
+  │                 (make-taxy
+  │                  :name "Consonants"
+  │                  :description "Well, if they aren't vowels..."))))
   │ 
   │ (taxy-plain
   │  (taxy-fill (reverse
-  │ 	     (cl-loop for l from ?a to ?n
-  │ 		      collect (upcase (char-to-string l))))
-  │ 	    lettery))
+  │              (cl-loop for l from ?a to ?n
+  │                       collect (upcase (char-to-string l))))
+  │             lettery))
   └────
 
   That produces:
@@ -193,9 +193,9 @@ Flexible table view
   ┌────
   │ (taxy-plain
   │  (taxy-fill (reverse
-  │ 	     (cl-loop for l from ?n to ?z
-  │ 		      collect (upcase (char-to-string l))))
-  │ 	    lettery))
+  │              (cl-loop for l from ?n to ?z
+  │                       collect (upcase (char-to-string l))))
+  │             lettery))
   └────
 
   Which gives us:
@@ -242,45 +242,45 @@ Flexible table view
   ┌────
   │ (defvar sports
   │   (list (make-sport :name "Baseball"
-  │ 		    :uses '(bat ball glove)
-  │ 		    :venue 'outdoor
-  │ 		    :fun t)
-  │ 	(make-sport :name "Football"
-  │ 		    :uses '(ball)
-  │ 		    :venue 'outdoor
-  │ 		    :fun t)
-  │ 	(make-sport :name "Basketball"
-  │ 		    :uses '(ball hoop)
-  │ 		    :venue 'indoor
-  │ 		    :fun t)
-  │ 	(make-sport :name "Tennis"
-  │ 		    :uses '(ball racket)
-  │ 		    :venue 'outdoor
-  │ 		    :fun t)
-  │ 	(make-sport :name "Racquetball"
-  │ 		    :uses '(ball racket)
-  │ 		    :venue 'indoor
-  │ 		    :fun t)
-  │ 	(make-sport :name "Handball"
-  │ 		    :uses '(ball glove)
-  │ 		    :venue 'indoor
-  │ 		    :fun t)
-  │ 	(make-sport :name "Soccer"
-  │ 		    :uses '(ball)
-  │ 		    :venue 'outdoor
-  │ 		    :fun nil)
-  │ 	(make-sport :name "Disc golf"
-  │ 		    :uses '(disc basket)
-  │ 		    :venue 'outdoor
-  │ 		    :fun t)
-  │ 	(make-sport :name "Ultimate"
-  │ 		    :uses '(disc)
-  │ 		    :venue 'outdoor
-  │ 		    :fun t)
-  │ 	(make-sport :name "Volleyball"
-  │ 		    :uses '(ball)
-  │ 		    :venue 'indoor
-  │ 		    :fun t)))
+  │                     :uses '(bat ball glove)
+  │                     :venue 'outdoor
+  │                     :fun t)
+  │         (make-sport :name "Football"
+  │                     :uses '(ball)
+  │                     :venue 'outdoor
+  │                     :fun t)
+  │         (make-sport :name "Basketball"
+  │                     :uses '(ball hoop)
+  │                     :venue 'indoor
+  │                     :fun t)
+  │         (make-sport :name "Tennis"
+  │                     :uses '(ball racket)
+  │                     :venue 'outdoor
+  │                     :fun t)
+  │         (make-sport :name "Racquetball"
+  │                     :uses '(ball racket)
+  │                     :venue 'indoor
+  │                     :fun t)
+  │         (make-sport :name "Handball"
+  │                     :uses '(ball glove)
+  │                     :venue 'indoor
+  │                     :fun t)
+  │         (make-sport :name "Soccer"
+  │                     :uses '(ball)
+  │                     :venue 'outdoor
+  │                     :fun nil)
+  │         (make-sport :name "Disc golf"
+  │                     :uses '(disc basket)
+  │                     :venue 'outdoor
+  │                     :fun t)
+  │         (make-sport :name "Ultimate"
+  │                     :uses '(disc)
+  │                     :venue 'outdoor
+  │                     :fun t)
+  │         (make-sport :name "Volleyball"
+  │                     :uses '(ball)
+  │                     :venue 'indoor
+  │                     :fun t)))
   └────
 
   And finally we'll define a taxy to organize them.  In this, we use a
@@ -290,23 +290,23 @@ Flexible table view
   ┌────
   │ (defvar sporty
   │   (cl-macrolet ((in (needle haystack)
-  │ 		    `(lambda (item)
-  │ 		       (when (member ,needle (funcall ,haystack item))
-  │ 			 ,needle))))
+  │                     `(lambda (item)
+  │                        (when (member ,needle (funcall ,haystack item))
+  │                          ,needle))))
   │     (make-taxy
   │      :name "Sporty"
   │      :take (lambda (item taxy)
-  │ 	     (taxy-take-keyed
-  │ 	       (list #'sport-venue
-  │ 		     (in 'ball 'sport-uses)
-  │ 		     (in 'disc 'sport-uses)
-  │ 		     (in 'glove 'sport-uses)
-  │ 		     (in 'racket 'sport-uses))
-  │ 	       item taxy
-  │ 	       ;; We set the `:then' function of the taxys
-  │ 	       ;; created by `taxy-take-keyed' to `identity'
-  │ 	       ;; so they will not consume their items.
-  │ 	       :then #'identity)))))
+  │              (taxy-take-keyed
+  │                (list #'sport-venue
+  │                      (in 'ball 'sport-uses)
+  │                      (in 'disc 'sport-uses)
+  │                      (in 'glove 'sport-uses)
+  │                      (in 'racket 'sport-uses))
+  │                item taxy
+  │                ;; We set the `:then' function of the taxys
+  │                ;; created by `taxy-take-keyed' to `identity'
+  │                ;; so they will not consume their items.
+  │                :then #'identity)))))
   └────
 
   Now let's fill the taxy with the sports and format it:
@@ -325,18 +325,18 @@ Flexible table view
   │      ((ball
   │        ("Volleyball" "Basketball")
   │        ((glove
-  │ 	 ("Handball"))
-  │ 	(racket
-  │ 	 ("Racquetball"))))))
+  │          ("Handball"))
+  │         (racket
+  │          ("Racquetball"))))))
   │     (outdoor
   │      ((disc
   │        ("Ultimate" "Disc golf"))
   │       (ball
   │        ("Soccer" "Football")
   │        ((racket
-  │ 	 ("Tennis"))
-  │ 	(glove
-  │ 	 ("Baseball"))))))))))
+  │          ("Tennis"))
+  │         (glove
+  │          ("Baseball"))))))))))
   └────
 
   That's pretty sporty.  But classifying them by venue first makes the
@@ -347,20 +347,20 @@ Flexible table view
   ┌────
   │ (defvar sporty
   │   (cl-macrolet ((in (needle haystack)
-  │ 		    `(lambda (item)
-  │ 		       (when (member ,needle (funcall ,haystack item))
-  │ 			 ,needle))))
+  │                     `(lambda (item)
+  │                        (when (member ,needle (funcall ,haystack item))
+  │                          ,needle))))
   │     (make-taxy
   │      :name "Sporty"
   │      :take (lambda (item taxy)
-  │ 	     (taxy-take-keyed
-  │ 	       (list (in 'ball 'sport-uses)
-  │ 		     (in 'disc 'sport-uses)
-  │ 		     (in 'glove 'sport-uses)
-  │ 		     (in 'racket 'sport-uses)
-  │ 		     #'sport-venue)
-  │ 	       item taxy
-  │ 	       :then #'identity)))))
+  │              (taxy-take-keyed
+  │                (list (in 'ball 'sport-uses)
+  │                      (in 'disc 'sport-uses)
+  │                      (in 'glove 'sport-uses)
+  │                      (in 'racket 'sport-uses)
+  │                      #'sport-venue)
+  │                item taxy
+  │                :then #'identity)))))
   │ 
   │ (thread-last sporty
   │   taxy-emptied
@@ -377,18 +377,18 @@ Flexible table view
   │     (ball
   │      ((racket
   │        ((indoor
-  │ 	 ("Racquetball"))
-  │ 	(outdoor
-  │ 	 ("Tennis"))))
+  │          ("Racquetball"))
+  │         (outdoor
+  │          ("Tennis"))))
   │       (indoor
   │        ("Volleyball" "Basketball"))
   │       (outdoor
   │        ("Soccer" "Football"))
   │       (glove
   │        ((indoor
-  │ 	 ("Handball"))
-  │ 	(outdoor
-  │ 	 ("Baseball"))))))))))
+  │          ("Handball"))
+  │         (outdoor
+  │          ("Baseball"))))))))))
   └────
 
   That's better.  But I'd also like to see a very simple classification
@@ -399,12 +399,12 @@ Flexible table view
   │     (make-taxy
   │      :name "Funny"
   │      :take (lambda (item taxy)
-  │ 	     (taxy-take-keyed
-  │ 	       (list (lambda (sport)
-  │ 		       (if (sport-fun sport)
-  │ 			   'fun 'boring))
-  │ 		     #'sport-venue)
-  │ 	       item taxy)))
+  │              (taxy-take-keyed
+  │                (list (lambda (sport)
+  │                        (if (sport-fun sport)
+  │                            'fun 'boring))
+  │                      #'sport-venue)
+  │                item taxy)))
   │   taxy-emptied
   │   (taxy-fill sports)
   │   (taxy-mapcar #'sport-name)
@@ -466,10 +466,10 @@ Flexible table view
 
   ┌────
   │ (make-taxy :name "Numbery"
-  │ 	   :description "A silly taxonomy of numbers."
-  │ 	   :predicate #'numberp
-  │ 	   :then #'ignore
-  │ 	   :taxys (list ...))
+  │            :description "A silly taxonomy of numbers."
+  │            :predicate #'numberp
+  │            :then #'ignore
+  │            :taxys (list ...))
   └────
 
   The `:predicate' function determines whether an object fits into that
@@ -515,37 +515,37 @@ Flexible table view
   │ 
   │ (defvar ement-roomy-unread
   │   (make-taxy :name "Unread"
-  │ 	     :predicate (lambda (room)
-  │ 			  (buffer-modified-p (ement-roomy-buffer room)))))
+  │              :predicate (lambda (room)
+  │                           (buffer-modified-p (ement-roomy-buffer room)))))
   │ 
   │ (defvar ement-roomy-opened
   │   (make-taxy :name "Opened"
-  │ 	     :description "Rooms with buffers"
-  │ 	     :predicate #'ement-roomy-buffer
-  │ 	     :taxys (list ement-roomy-unread
-  │ 			  (make-taxy))))
+  │              :description "Rooms with buffers"
+  │              :predicate #'ement-roomy-buffer
+  │              :taxys (list ement-roomy-unread
+  │                           (make-taxy))))
   │ 
   │ (defvar ement-roomy-closed
   │   (make-taxy :name "Closed"
-  │ 	     :description "Rooms without buffers"
-  │ 	     :predicate (lambda (room)
-  │ 			  (not (ement-roomy-buffer room)))))
+  │              :description "Rooms without buffers"
+  │              :predicate (lambda (room)
+  │                           (not (ement-roomy-buffer room)))))
   │ 
   │ (defvar ement-roomy
   │   (make-taxy
   │    :name "Ement Rooms"
   │    :taxys (list (make-taxy
-  │ 		 :name "Direct"
-  │ 		 :description "Direct messaging rooms"
-  │ 		 :predicate (lambda (room)
-  │ 			      (ement-room--direct-p room ement-session))
-  │ 		 :taxys (list ement-roomy-opened
-  │ 			      ement-roomy-closed))
-  │ 		(make-taxy
-  │ 		 :name "Non-direct"
-  │ 		 :description "Group chat rooms"
-  │ 		 :taxys (list ement-roomy-opened
-  │ 			      ement-roomy-closed)))))
+  │                  :name "Direct"
+  │                  :description "Direct messaging rooms"
+  │                  :predicate (lambda (room)
+  │                               (ement-room--direct-p room ement-session))
+  │                  :taxys (list ement-roomy-opened
+  │                               ement-roomy-closed))
+  │                 (make-taxy
+  │                  :name "Non-direct"
+  │                  :description "Group chat rooms"
+  │                  :taxys (list ement-roomy-opened
+  │                               ement-roomy-closed)))))
   └────
 
   Note how the taxys defined in the first three variables are used in
@@ -562,10 +562,10 @@ Flexible table view
   ┌────
   │ (taxy-plain
   │  (taxy-mapcar (lambda (room)
-  │ 		(list (ement-room--room-display-name room)
-  │ 		      (ement-room-id room)))
+  │                 (list (ement-room--room-display-name room)
+  │                       (ement-room-id room)))
   │    (taxy-fill (ement-session-rooms ement-session)
-  │ 	      (taxy-emptied ement-roomy))))
+  │               (taxy-emptied ement-roomy))))
   └────
 
   This produces:
@@ -583,14 +583,14 @@ Flexible table view
   │    (("Opened" "Rooms with buffers"
   │      (("Unread"
   │        (("Emacs" "!WfZsmtnxbxTdoYPkaT:greyface.org")
-  │ 	("#emacs" "!KuaCUVGoCiunYyKEpm:libera.chat")))
+  │         ("#emacs" "!KuaCUVGoCiunYyKEpm:libera.chat")))
   │       ;; The non-unread buffers in the "anonymous" taxy.
   │       ((("magit/magit" "!HZYimOcmEAsAxOcgpE:gitter.im")
-  │ 	("Ement.el" "!NicAJNwJawmHrEhqZs:matrix.org")
-  │ 	("#emacsconf" "!UjTTDnYmSAslLTtMCF:libera.chat")
-  │ 	("Emacs Matrix Client" "!ZrZoyXEyFrzcBZKNis:matrix.org")
-  │ 	("org-mode" "!rUhEinythPhVTdddsb:matrix.org")
-  │ 	("This Week in Matrix (TWIM)" "!xYvNcQPhnkrdUmYczI:matrix.org")))))
+  │         ("Ement.el" "!NicAJNwJawmHrEhqZs:matrix.org")
+  │         ("#emacsconf" "!UjTTDnYmSAslLTtMCF:libera.chat")
+  │         ("Emacs Matrix Client" "!ZrZoyXEyFrzcBZKNis:matrix.org")
+  │         ("org-mode" "!rUhEinythPhVTdddsb:matrix.org")
+  │         ("This Week in Matrix (TWIM)" "!xYvNcQPhnkrdUmYczI:matrix.org")))))
   │     ("Closed" "Rooms without buffers"
   │      (("#matrix-spec" "!NasysSDfxKxZBzJJoE:matrix.org")
   │       ("#commonlisp" "!IiGsrmKRHzpupHRaKS:libera.chat")
@@ -615,8 +615,8 @@ Flexible table view
   │   taxy-emptied
   │   (taxy-fill (ement-session-rooms ement-session))
   │   (taxy-mapcar (lambda (room)
-  │ 		 (list (ement-room--room-display-name room)
-  │ 		       (ement-room-id room))))
+  │                  (list (ement-room--room-display-name room)
+  │                        (ement-room-id room))))
   │   taxy-plain)
   └────
 
@@ -667,14 +667,14 @@ Flexible table view
   │   (make-taxy
   │    :name "Buffers"
   │    :taxys (list
-  │ 	   (make-taxy
-  │ 	    :name "Modes"
-  │ 	    :take (apply-partially #'taxy-take-keyed (list #'buffery-major-mode))))))
+  │            (make-taxy
+  │             :name "Modes"
+  │             :take (apply-partially #'taxy-take-keyed (list #'buffery-major-mode))))))
   │ 
   │ ;; Note the use of `taxy-emptied' to avoid mutating the original taxy definition.
   │ (taxy-plain
   │  (taxy-fill (buffer-list)
-  │ 	    (taxy-emptied buffery)))
+  │             (taxy-emptied buffery)))
   └────
 
   The taxy's `:take' function is set to the `taxy-take-keyed' function,
@@ -707,8 +707,8 @@ Flexible table view
   │      (#<buffer *Help*>))
   │     (emacs-lisp-mode
   │      (#<buffer ement.el<ement.el>> #<buffer ement-room-list.el> #<buffer *scratch*>
-  │ 	       #<buffer ement-room.el> #<buffer init.el> #<buffer bufler.el>
-  │ 	       #<buffer dash.el> #<buffer *Pp Eval Output*> #<buffer taxy.el> #<buffer scratch.el>))))))
+  │                #<buffer ement-room.el> #<buffer init.el> #<buffer bufler.el>
+  │                #<buffer dash.el> #<buffer *Pp Eval Output*> #<buffer taxy.el> #<buffer scratch.el>))))))
   └────
 
 
@@ -731,18 +731,18 @@ Flexible table view
   ┌────
   │ (defvar buffery
   │   (cl-labels ((buffer-mode (buffer) (buffer-local-value 'major-mode buffer))
-  │ 	      (buffer-directory (buffer) (buffer-local-value 'default-directory buffer)))
+  │               (buffer-directory (buffer) (buffer-local-value 'default-directory buffer)))
   │     (make-taxy
   │      :name "Buffers"
   │      :taxys (list
-  │ 	     (make-taxy
-  │ 	      :name "Directories"
-  │ 	      :take (lambda (item taxy)
-  │ 		      (taxy-take-keyed (list #'buffer-directory #'buffer-mode) item taxy)))))))
+  │              (make-taxy
+  │               :name "Directories"
+  │               :take (lambda (item taxy)
+  │                       (taxy-take-keyed (list #'buffer-directory #'buffer-mode) item taxy)))))))
   │ 
   │ (taxy-plain
   │  (taxy-fill (buffer-list)
-  │ 	    (taxy-emptied buffery)))
+  │             (taxy-emptied buffery)))
   └────
 
   That produces a list like:
@@ -791,30 +791,30 @@ Flexible table view
   ┌────
   │ (defvar sporty-dynamic
   │   (cl-macrolet ((in (needle haystack)
-  │ 		    `(lambda (item)
-  │ 		       (when (member ,needle (funcall ,haystack item))
-  │ 			 ,needle))))
+  │                     `(lambda (item)
+  │                        (when (member ,needle (funcall ,haystack item))
+  │                          ,needle))))
   │     (cl-labels ((outdoor-p
-  │ 		 (sport) (when (eq 'outdoor (sport-venue sport))
-  │ 			   "Outdoor"))
-  │ 		(indoor-p
-  │ 		 (sport) (when (eq 'indoor (sport-venue sport))
-  │ 			   "Indoor"))
-  │ 		(disc-p
-  │ 		 (sport) (if (funcall (in 'disc 'sport-uses) sport)
-  │ 			     'disc
-  │ 			   'non-disc)))
+  │                  (sport) (when (eq 'outdoor (sport-venue sport))
+  │                            "Outdoor"))
+  │                 (indoor-p
+  │                  (sport) (when (eq 'indoor (sport-venue sport))
+  │                            "Indoor"))
+  │                 (disc-p
+  │                  (sport) (if (funcall (in 'disc 'sport-uses) sport)
+  │                              'disc
+  │                            'non-disc)))
   │       (make-taxy
   │        :name "Sporty (dynamic)"
   │        :take (lambda (item taxy)
-  │ 	       (taxy-take-keyed
-  │ 		 (list (list #'outdoor-p #'disc-p)
-  │ 		       (list #'indoor-p
-  │ 			     (in 'ball 'sport-uses)
-  │ 			     (in 'disc 'sport-uses)
-  │ 			     (in 'glove 'sport-uses)
-  │ 			     (in 'racket 'sport-uses)))
-  │ 		 item taxy))))))
+  │                (taxy-take-keyed
+  │                  (list (list #'outdoor-p #'disc-p)
+  │                        (list #'indoor-p
+  │                              (in 'ball 'sport-uses)
+  │                              (in 'disc 'sport-uses)
+  │                              (in 'glove 'sport-uses)
+  │                              (in 'racket 'sport-uses)))
+  │                  item taxy))))))
   └────
 
   Now let's fill the taxy with the sports and format it:
@@ -875,15 +875,15 @@ Flexible table view
   │   (pcase thing
   │     (`nil (sport-uses item))
   │     (_ (when (cl-typecase (sport-uses item)
-  │ 	       (symbol (equal thing (sport-uses item)))
-  │ 	       (list (member thing (sport-uses item))))
-  │ 	 thing))))
+  │                (symbol (equal thing (sport-uses item)))
+  │                (list (member thing (sport-uses item))))
+  │          thing))))
   │ 
   │ (sporty-define-key venue (&optional place)
   │   (pcase place
   │     (`nil (sport-venue item))
   │     (_ (when (equal place (sport-venue item))
-  │ 	 (sport-venue item)))))
+  │          (sport-venue item)))))
   └────
 
   Now we'll define the default keys to use when classifying items.  This
@@ -908,9 +908,9 @@ Flexible table view
 
   ┌────
   │ (let ((taxy (make-taxy
-  │ 	     :name "Sporty (DSL)"
-  │ 	     :take (taxy-make-take-function sporty-default-keys
-  │ 					    sporty-keys))))
+  │              :name "Sporty (DSL)"
+  │              :take (taxy-make-take-function sporty-default-keys
+  │                                             sporty-keys))))
   │   (thread-last taxy
   │     (taxy-fill sports)
   │     (taxy-mapcar #'sport-name)
@@ -948,9 +948,9 @@ Flexible table view
   │ (cl-defun sporty-classify (sports &key (keys sporty-default-keys))
   │   (declare (indent defun))
   │   (let* ((taxy (make-taxy
-  │ 		:name "Sporty (DSL)"
-  │ 		:take (taxy-make-take-function keys
-  │ 					       sporty-keys))))
+  │                 :name "Sporty (DSL)"
+  │                 :take (taxy-make-take-function keys
+  │                                                sporty-keys))))
   │     (thread-last taxy
   │       (taxy-fill sports)
   │       (taxy-mapcar #'sport-name)
@@ -1017,6 +1017,13 @@ Flexible table view
   taxy-fill (items taxy)
         Fill `taxy' with `items' according to its definition.
 
+  taxy-lift (taxy)
+        Return `taxy' having "lifted" its sub-taxys.  That is, a
+        sub-taxy which has fewer items than `taxy-lift-min-items' will
+        have its items \"lifted\" into its parent taxy's items, and the
+        sub-taxy itself will be removed from its parent taxy's taxys.
+        This operates recursively within `taxy''s sub-taxys.
+
   taxy-make-take-function (keys aliases)
         Return a taxy "take" function for `keys'.  Each of `keys' should
         be a function alias defined in `aliases', or a list of such
@@ -1075,7 +1082,16 @@ Flexible table view
 4 Changelog
 ═══════════
 
-4.1 0.10.2
+4.1 v0.11-pre
+─────────────
+
+  *Additions*
+  ⁃ Function `taxy-lift', which "lifts" the items in sub-taxys which
+    have fewer than a certain number of items into parent taxys (helping
+    to reduce the number of taxys with only a few items in them).
+
+
+4.2 0.10.2
 ──────────
 
   *Fixes*
@@ -1083,14 +1099,14 @@ Flexible table view
     byte-compiler warnings in downstream packages.
 
 
-4.2 0.10.1
+4.3 0.10.1
 ──────────
 
   *Examples*
   ⁃ Fixed byte-compilation of `diredy.el'.
 
 
-4.3 0.10
+4.4 0.10
 ────────
 
   *Examples*
@@ -1099,10 +1115,10 @@ Flexible table view
   ⁃ Diredy: Various small improvements.
 
 
-4.4 0.9
+4.5 0.9
 ───────
 
-4.4.1 Changes
+4.5.1 Changes
 ╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ Library `taxy-magit-section' is now [packaged separately] and
@@ -1117,25 +1133,25 @@ Flexible table view
 <https://github.com/alphapapa/taxy.el/tree/package/taxy-magit-section>
 
 
-4.5 0.8
+4.6 0.8
 ───────
 
-4.5.1 Additions
+4.6.1 Additions
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ Short documentation group for Emacs 28+.
 
 
-4.5.2 Fixes
+4.6.2 Fixes
 ╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ Require `map' for `pcase' pattern.
 
 
-4.6 0.7
+4.7 0.7
 ───────
 
-4.6.1 Additions
+4.7.1 Additions
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ Function `taxy-flatten' returns a list of the items in a taxy and
@@ -1145,10 +1161,10 @@ Flexible table view
     Taxy.
 
 
-4.7 0.6
+4.8 0.6
 ───────
 
-4.7.1 Additions
+4.8.1 Additions
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ Sorting functions:
@@ -1172,10 +1188,10 @@ Flexible table view
     published as a separate package later.)
 
 
-4.8 0.5
+4.9 0.5
 ───────
 
-4.8.1 Additions
+4.9.1 Additions
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ Function `taxy-magit-section-insert' takes new arguments:
@@ -1195,23 +1211,23 @@ Flexible table view
   ⁃ New example `taxy-package-report'.
 
 
-4.8.2 Fixes
+4.9.2 Fixes
 ╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ Example `diredy' referred to an old function name.
 
 
-4.9 0.4
-───────
+4.10 0.4
+────────
 
   ⁃ Incremented version to cause a new ELPA release (since removing a
     file that wasn't intended to be distributed on ELPA).
 
 
-4.10 0.3
+4.11 0.3
 ────────
 
-4.10.1 Changes
+4.11.1 Changes
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ Within the `taxy' struct and related functions, the term `objects'
@@ -1220,7 +1236,7 @@ Flexible table view
     becomes `(taxy-items taxy)').
 
 
-4.10.2 Fixes
+4.11.2 Fixes
 ╌╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ Function `taxy-fill' always calls a taxy's `:take' function if
@@ -1230,10 +1246,10 @@ Flexible table view
     rely on text properties at the beginning of a line will work).
 
 
-4.11 0.2
+4.12 0.2
 ────────
 
-4.11.1 Changes
+4.12.1 Changes
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ Function `taxy-take-keyed*' is renamed to `taxy-take-keyed',
@@ -1241,7 +1257,7 @@ Flexible table view
     reason to maintain two versions.
 
 
-4.11.2 Additions
+4.12.2 Additions
 ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ Struct `taxy' now has a `:make' slot, a function called to make new
@@ -1254,10 +1270,13 @@ Flexible table view
     now be a function or a list of functions (or a list of a list of
     functions, etc.).  Lists of functions create "chains" of
     independent, dynamic taxys descending from a single root taxy.  See
-    .
+    [example].
 
 
-4.11.3 Fixes
+[example] See section 3.4.2
+
+
+4.12.3 Fixes
 ╌╌╌╌╌╌╌╌╌╌╌╌
 
   ⁃ `taxy-magit-section''s `insert-object' function.
@@ -1265,7 +1284,7 @@ Flexible table view
     take them.
 
 
-4.12 0.1
+4.13 0.1
 ────────
 
   First tagged version.
