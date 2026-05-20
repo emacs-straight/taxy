@@ -1,2 +1,2 @@
-;; Generated package description from taxy.el  -*- no-byte-compile: t -*-
-(define-package "taxy" "0.11pre0.20251129.62050" "Programmable taxonomical grouping for arbitrary objects" '((emacs "26.3")) :commit "c7b830cf48d639be8fb7ee0f55f53341cb185102" :authors '(("Adam Porter" . "adam@alphapapa.net")) :maintainer '("Adam Porter" . "adam@alphapapa.net") :keywords '("lisp") :url "https://github.com/alphapapa/taxy.el")
+;; Generated package description from taxy.el  -*- no-byte-compile: t; lexical-binding:t -*-
+(define-package "taxy" "0.110.20251129.62050" "Programmable taxonomical grouping for arbitrary objects" '((emacs "26.3")) :commit "c7b830cf48d639be8fb7ee0f55f53341cb185102" :authors '(("Adam Porter" . "adam@alphapapa.net")) :maintainer '("Adam Porter" . "adam@alphapapa.net") :keywords '("lisp") :url "https://github.com/alphapapa/taxy.el")
